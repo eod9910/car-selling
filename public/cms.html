@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CMS - Car Management</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+  <style>
+    .cms-form {
+      position: relative;
+      padding-bottom: 50px; /* Adjust as needed to prevent overlap with buttons */
+    }
+
+    #addCarButton {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+      background-color: #21a125;
+      color: white;
+      z-index: 1000;
+      display: block;
+    }
+
+    #doneButton {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background-color: #008CBA;
+      color: white;
+      z-index: 1000;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="l_and_t_towing_logo.png" alt="L&T Towing Logo" class="logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="carListings.html">Car Listings</a></li>
+        <li><a href="searchFilter.html">Search</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li id="cms-link" style="display: none;"><a href="cms.html">CMS</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Add New Car</h2>
+    <div class="vin-lookup">
+      <label for="vin">VIN:</label>
+      <input type="text" id="vin" name="vin" required>
+      <button type="button" id="lookup-vin" class="cms-button">Lookup VIN</button>
+    </div>
+    <form id="cms-form" class="cms-form">
+      <label for="make">Make:</label>
+      <input type="text" id="make" name="make" required aria-label="Make"><br><br>
+      <label for="model">Model:</label>
+      <input type="text" id="model" name="model" required aria-label="Model"><br><br>
+      <label for="year">Year:</label>
+      <input type="number" id="year" name="year" required aria-label="Year"><br><br>
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" required aria-label="Price"><br><br>
+      <label for="images">Car Images:</label>
+      <input type="file" id="images" name="images" accept="image/*" multiple required aria-label="Images"><br><br>
+      <label for="engine">Engine:</label>
+      <input type="text" id="engine" name="engine" required aria-label="Engine"><br><br>
+      <label for="transmission">Transmission:</label>
+      <input type="text" id="transmission" name="transmission" required aria-label="Transmission"><br><br>
+      <label for="fuelType">Fuel Type:</label>
+      <input type="text" id="fuelType" name="fuelType" required aria-label="Fuel Type"><br><br>
+      <label for="mileage">Mileage:</label>
+      <input type="text" id="mileage" name="mileage" required aria-label="Mileage"><br><br>
+      <label for="exteriorColor">Exterior Color:</label>
+      <input type="text" id="exteriorColor" name="exteriorColor" required aria-label="Exterior Color"><br><br>
+      <label for="interiorColor">Interior Color:</label>
+      <input type="text" id="interiorColor" name="interiorColor" required aria-label="Interior Color"><br><br>
+      <label for="features">Features:</label>
+      <input type="text" id="features" name="features" required aria-label="Features"><br><br>
+      <label for="history">History:</label>
+      <input type="text" id="history" name="history" required aria-label="History"><br><br>
+      <label for="dmvBackFees">DMV Back Fees:</label>
+      <input type="number" id="dmvBackFees" name="dmvBackFees" step="0.01" min="0">
+      <div class="form-buttons">
+        <button type="submit" id="addCarButton" class="cms-button">Add Car</button>
+        <button type="button" id="doneButton" class="cms-button" style="display: none;">Done</button>
+        <button type="button" id="cancelButton" class="cms-button" style="display: none;">Cancel</button>
+      </div>
+    </form>
+
+    <h2>Current Car Listings</h2>
+    <div id="cms-car-listings" class="cms-car-listings">
+      <!-- Car listings will be dynamically generated here -->
+    </div>
+  </main>
+  <footer>
+    <p>&copy; <script>document.write(new Date().getFullYear())</script> Car Selling Website. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
