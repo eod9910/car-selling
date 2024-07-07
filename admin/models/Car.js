@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const carSchema = new mongoose.Schema({
-  vin: { type: String, required: true, unique: true },  // Only VIN is unique
+  vin: { type: String, required: true, unique: true },
   make: { type: String, required: true },
   model: { type: String, required: true },
   year: { type: Number, required: true },
@@ -27,7 +27,6 @@ const carSchema = new mongoose.Schema({
   images: [String] // Array of image paths
 });
 
-// Add this line to create an explicit index for the VIN field
 carSchema.index({ vin: 1 }, { unique: true });
 
 module.exports = mongoose.model('Car', carSchema);

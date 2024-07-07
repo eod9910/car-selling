@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const carForm = document.getElementById('car-form');
     const cancelButton = document.getElementById('cancelButton');
     const lookupVinButton = document.getElementById('lookup-vin');
+    const addCarButton = document.getElementById('addCarButton');
 
     let isEditing = false;
     let editingCarId = null;
@@ -48,34 +49,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // VIN Lookup
+    async function getCarDetailsByVIN(vin) {
+        const url = `https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`;
+        console.log('Fetching VIN data from:', url); // Debugging line
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`VIN lookup failed: ${response.status} ${response.statusText}`);
+        }
+        const data = await response.json();
+        
+        const results = data.Results;
+        const getValueByVariable = (variable) => {
+            const item = results.find(item => item.Variable === variable);
+            return item ? item.Value : '';
+        };
+
+        return {
+            make: getValueByVariable('Make'),
+            model: getValueByVariable('Model'),
+            year: getValueByVariable('Model Year'),
+            engine: getValueByVariable('Engine Model'),
+            transmission: getValueByVariable('Transmission Style'),
+            fuelType: getValueByVariable('Fuel Type - Primary'),
+        };
+    }
+
+    // Update the VIN lookup event listener
     lookupVinButton.addEventListener('click', async function() {
-        const vin = document.getElementById('vin').value;
+        const vin = document.getElementById('vin').value.trim();
         if (vin) {
             try {
-                const carDetails = await fetchCarDetailsByVIN(vin);
+                document.getElementById('vin-loading').style.display = 'block';
+                const carDetails = await getCarDetailsByVIN(vin);
                 populateFormWithCarDetails(carDetails);
             } catch (error) {
                 console.error('Error during VIN lookup:', error);
-                alert('Failed to lookup VIN. Please try again or enter details manually.');
+                alert(`Failed to lookup VIN: ${error.message}. Please try again or enter details manually.`);
+            } finally {
+                document.getElementById('vin-loading').style.display = 'none';
             }
         } else {
             alert('Please enter a VIN');
         }
     });
 
-    async function fetchCarDetailsByVIN(vin) {
-        const response = await fetch(`/api/vin-lookup/${vin}`);
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'VIN lookup failed');
-        }
-        return await response.json();
-    }
-
     function populateFormWithCarDetails(carDetails) {
         Object.keys(carDetails).forEach(key => {
             const input = document.getElementById(key);
-            if (input) {
+            if (input && carDetails[key]) {
                 input.value = carDetails[key];
             }
         });
@@ -141,21 +162,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(carForm);
         const carData = Object.fromEntries(formData);
         
-        // Handle mileage field
-        if (carData.mileage === '' || carData.mileage.toLowerCase() === 'n/a' || carData.mileage.toLowerCase() === 'na') {
-            carData.mileage = null;
-        } else {
-            const mileageNum = Number(carData.mileage);
-            if (!isNaN(mileageNum)) {
-                carData.mileage = mileageNum;
-            }
-        }
-        
-        // Ensure required fields are numbers
-        ['year', 'price'].forEach(field => {
-            carData[field] = Number(carData[field]);
-        });
-        
         console.log('Submitting car data:', carData);
 
         try {
@@ -167,15 +173,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(carData)
             });
 
+            console.log('Response status:', response.status);
+            const responseData = await response.json();
+            console.log('Response data:', responseData);
+
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || 'Failed to save car');
+                throw new Error(responseData.message || 'Failed to save car');
             }
 
-            const result = await response.json();
-            return result;
+            return responseData;
         } catch (error) {
-            console.error('Error saving car:', error);
+            console.error('Error in submitCarForm:', error);
             throw error;
         }
     }
@@ -240,8 +248,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleFiles(files) {
-        files = files.length ? files : this.files;
-        [...files].forEach(previewFile);
+        files = files.length ? Array.from(files) : Array.from(this.files);
+        files.forEach(previewFile);
     }
 
     function previewFile(file) {
@@ -260,4 +268,52 @@ document.addEventListener('DOMContentLoaded', function() {
     if (carId) {
         loadCarDetails(carId);
     }
+
+    // Setup VIN drag and drop
+    function setupVinDragDrop() {
+        const vinInput = document.getElementById('vin');
+        
+        vinInput.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.style.background = '#e9ecef';
+        });
+
+        vinInput.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.style.background = '';
+        });
+
+        vinInput.addEventListener('drop', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            this.style.background = '';
+            
+            const dt = e.dataTransfer;
+            const text = dt.getData('text');
+            
+            this.value = text;
+            // Optionally trigger VIN lookup here
+            lookupVinButton.click();
+        });
+    }
+
+    setupVinDragDrop();
+
+    addCarButton.addEventListener('click', async function(e) {
+        e.preventDefault();
+        if (validateForm()) {
+            try {
+                const result = await submitCarForm();
+                console.log('Car added successfully:', result);
+                alert('Car added successfully!');
+                resetForm();
+                window.location.href = '/car-listings';
+            } catch (error) {
+                console.error('Error adding car:', error);
+                alert('Failed to add car: ' + error.message);
+            }
+        }
+    });
 });

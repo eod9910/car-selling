@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Car = require('../models/Car');
+const Car = require('../admin/models/Car');
 const multer = require('multer');
 const path = require('path');
 const axios = require('axios');
