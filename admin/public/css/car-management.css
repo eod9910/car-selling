@@ -1,0 +1,267 @@
+/* General styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.cms-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cms-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.cms-section h2 {
+    color: #ff0000;
+    margin-bottom: 15px; /* Reduce this value to move the button closer to the title */
+    font-size: 24px;
+}
+
+/* Form styles */
+.modern-form {
+    display: grid;
+    gap: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+/* Add or modify these styles */
+input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* If you want to specifically target the DMV Back Fees input */
+#dmvBackFees {
+    overflow: visible;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z' fill='%23333'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.make-model-row,
+.year-price-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* File input styling */
+input[type="file"] {
+    display: none;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.file-input-label:hover {
+    background-color: #e0e0e0;
+}
+
+.file-input-text {
+    margin-left: 10px;
+    color: #666;
+}
+
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+/* Form actions */
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Car listings section */
+#car-listings {
+    display: grid;
+    gap: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .make-model-row,
+    .year-price-row {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+/* Image wrapper styles */
+.image-wrapper {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.thumbnail {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+#carImages {
+    display: block;
+    margin-top: 5px;
+}
+
+/* Drag and drop styles */
+.drop-zone {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    width: calc(100% - 20px); /* Subtract left and right padding */
+    padding: 20px;
+    margin: 10px auto; /* Center the drop zone and add vertical margin */
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.drop-zone.dragover {
+    background-color: #f0f0f0;
+    border-color: #000;
+}
+
+#preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.image-preview {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin: 5px;
+}
+
+/* Style for the Choose Files button */
+.drop-zone button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.drop-zone button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Adjust the spacing for the Add/Edit Car title */
+.cms-section h2 {
+    margin-bottom: 15px; /* Reduce this value to move the button closer to the title */
+}
+
+/* Adjust the Lookup VIN button positioning */
+#lookup-vin {
+    margin-top: -5px; /* This will move the button up slightly */
+    margin-bottom: 10px; /* Adjust this to control space below the button */
+}
+
+/* Adjust the VIN input field */
+.form-group:first-of-type {
+    margin-top: 5px; /* This adds a small space above the VIN input */
+}

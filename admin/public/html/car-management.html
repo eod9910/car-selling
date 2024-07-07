@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Management - L&T Towing</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/car-management.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="/assets/towing_logo.png" alt="L&T Towing Logo" class="logo">
+            </div>
+            <div class="title-container">
+                <h1 class="admin-title">CAR MANAGEMENT</h1>
+            </div>
+            <nav class="nav-container">
+                <ul>
+                    <li><a href="/admin-dashboard">HOME</a></li>
+                    <li><a href="/car-management">CARS</a></li>
+                    <li><a href="/car-listings">LISTINGS</a></li>
+                    <li><a href="/user-management">USERS</a></li>
+                    <li><a href="#" id="logout-link">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="page-wrapper">
+        <section id="car-form-section" class="cms-section">
+            <h2>Add/Edit Car</h2>
+            <form id="car-form" class="modern-form" enctype="multipart/form-data">
+                <div class="form-group">
+                    <button type="button" id="lookup-vin" class="btn btn-secondary">Lookup VIN</button>
+                    <div class="input-group">
+                        <input type="text" id="vin" name="vin" required>                        
+                    </div>
+                </div>
+
+                <div class="make-model-row">
+                    <div class="form-group">
+                        <label for="make">Make:</label>
+                        <input type="text" id="make" name="make" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="model">Model:</label>
+                        <input type="text" id="model" name="model" required>
+                    </div>
+                </div>
+
+                <div class="year-price-row">
+                    <div class="form-group">
+                        <label for="year">Year:</label>
+                        <input type="number" id="year" name="year" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price:</label>
+                        <input type="number" id="price" name="price" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lot">Lot:</label>
+                    <select id="lot" name="lot" required>
+                        <option value="">Select a Lot</option>
+                        <option value="Lot All">All</option>
+                        <option value="Lot Willows">Willows</option>
+                        <option value="Lot Oroville">Oroville</option>
+                        <option value="Lot Yuba">Yuba</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="engine">Engine:</label>
+                    <input type="text" id="engine" name="engine">
+                </div>
+
+                <div class="form-group">
+                    <label for="transmission">Transmission:</label>
+                    <input type="text" id="transmission" name="transmission">
+                </div>
+
+                <div class="form-group">
+                    <label for="fuelType">Fuel Type:</label>
+                    <input type="text" id="fuelType" name="fuelType">
+                </div>
+
+                <div class="form-group">
+                    <label for="mileage">Mileage:</label>
+                    <input type="text" id="mileage" name="mileage">
+                </div>
+
+                <div class="form-group">
+                    <label for="exteriorColor">Exterior Color:</label>
+                    <input type="text" id="exteriorColor" name="exteriorColor">
+                </div>
+
+                <div class="form-group">
+                    <label for="features">Features:</label>
+                    <textarea id="features" name="features" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="history">History:</label>
+                    <textarea id="history" name="history" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="dmvBackFees">DMV Back Fees:</label>
+                    <input type="number" id="dmvBackFees" name="dmvBackFees" step="0.01">
+                </div>
+
+                <div id="existing-images"></div>
+                <div class="form-group">
+                    <label for="carImages">Add New Images:</label>
+                    <div id="drop-zone" class="drop-zone">
+                        <p>Drag & Drop images here or</p>
+                        <button type="button" onclick="document.getElementById('carImages').click()">Choose Files</button>
+                    </div>
+                    <input type="file" id="carImages" name="carImages" multiple accept="image/*" style="display: none;">
+                    <div id="preview-container"></div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Add Car</button>
+                    <button type="button" id="cancelButton" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </section>
+
+        
+    </main>
+    <footer>
+        <p>&copy; 2024 L&T Towing Admin Dashboard. All rights reserved.</p>
+    </footer>
+    <script src="/js/pages/car-management.js"></script>
+    <script src="/js/pages/admin-global.js"></script>
+</body>
+</html>

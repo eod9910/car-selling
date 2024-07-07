@@ -1,0 +1,28 @@
+/* Car Listings Page Styles */
+.car-listings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.car-listing {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.car-listing img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.car-details {
+  padding: 15px;
+}
+
+.car-details h3 {
+  margin-top: 0;
+  color: #FF0000;
+}

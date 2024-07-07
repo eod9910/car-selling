@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Listings - L&T Towing</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/car-listings.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="/assets/towing_logo.png" alt="L&T Towing Logo" class="logo">
+            </div>
+            <div class="title-container">
+                <h1 class="admin-title">CAR LISTINGS</h1>
+            </div>
+            <nav class="nav-container">
+                <ul>
+                    <li><a href="/admin-dashboard">HOME</a></li>
+                    <li><a href="/car-management">CARS</a></li>
+                    <li><a href="/car-listings">LISTINGS</a></li>
+                    <li><a href="/user-management">USERS</a></li>
+                    <li><a href="#" id="logout-link">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="page-wrapper">
+        <div class="content-wrapper">
+            <section class="car-listings-section">
+                <h2>Car Listings</h2>
+                <div id="car-listings" class="car-list">
+                    <!-- Car listings will be populated here by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 L&T Towing Admin Dashboard. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/pages/car-listings.js"></script>
+    <script src="/js/pages/admin-global.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Reset default font styles */
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    font-weight: normal;
+    font-size: 100%;
+}
+
+/* Reset list styles */
+ol, ul {
+    list-style: none;
+}
+
+/* Ensure proper rendering and touch zooming */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/* Remove default button styles */
+button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}

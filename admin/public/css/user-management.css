@@ -1,0 +1,175 @@
+/* General styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.cms-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cms-section {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cms-section h2 {
+    color: #ff0000;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Form styles */
+.modern-form {
+    display: grid;
+    gap: 10px; /* Reduced from 20px */
+}
+
+.form-group {
+    margin-bottom: 10px; /* Reduced from 20px */
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: #fff;
+}
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M10.293 3.293L6 7.586 1.707 3.293A1 1 0 00.293 4.707l5 5a1 1 0 001.414 0l5-5a1 1 0 10-1.414-1.414z' fill='%23333'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    padding-right: 30px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px; /* Reduced from 20px */
+}
+
+/* Button styles */
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+/* Form actions */
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px; /* Reduced from 20px */
+}
+
+/* User listings specific styles */
+#user-listings .user-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#user-listings .user-item:last-child {
+    border-bottom: none;
+}
+
+#user-listings .user-info {
+    flex-grow: 1;
+}
+
+#user-listings .user-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* User management layout */
+.user-management-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px; /* Increased from 30px to 40px for more space between columns */
+    max-width: 1200px; /* Added to ensure consistent max-width with container */
+    margin: 0 auto; /* Center the layout */
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .user-management-layout {
+        padding: 0 20px; /* Add some padding on smaller screens */
+    }
+}
+
+@media (max-width: 1024px) {
+    .user-management-layout {
+        grid-template-columns: 1fr;
+        gap: 30px; /* Reduce gap when stacked vertically */
+    }
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

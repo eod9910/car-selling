@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - L&T Towing</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/admin-dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="/assets/towing_logo.png" alt="L&T Towing Logo" class="logo">
+            </div>
+            <div class="title-container">
+                <h1 class="admin-title">ADMIN DASHBOARD</h1>
+            </div>
+            <nav class="nav-container">
+                <ul>
+                    <li><a href="/admin-dashboard">HOME</a></li>
+                    <li><a href="/car-management">CARS</a></li>
+                    <li><a href="/car-listings">LISTINGS</a></li>
+                    <li><a href="/user-management">USERS</a></li>
+                    <li><a href="#" id="logout-link">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="page-wrapper">
+        <div class="content-wrapper">
+            <section class="welcome">
+                <h2>Welcome to the L&T Towing Admin Dashboard</h2>
+            </section>
+
+            <section class="inventory-summary">
+                <h3>Inventory Summary</h3>
+                <div class="lot-grid">
+                    <div class="lot-card">
+                        <h4>Willows Lot</h4>
+                        <p>Total Cars: <span id="willowsTotalCars">Loading...</span></p>
+                    </div>
+                    <div class="lot-card">
+                        <h4>Oroville Lot</h4>
+                        <p>Total Cars: <span id="orovilleTotalCars">Loading...</span></p>
+                    </div>
+                    <div class="lot-card">
+                        <h4>Yuba City Lot</h4>
+                        <p>Total Cars: <span id="yubaCityTotalCars">Loading...</span></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 L&T Towing Admin Dashboard. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/pages/admin-dashboard.js"></script>
+    <script src="/js/pages/admin-global.js"></script>
+</body>
+</html>

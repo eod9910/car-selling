@@ -1,0 +1,126 @@
+/* Car Details Page Styles */
+
+.car-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.car-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.car-title {
+    font-size: 24px;
+    color: #FF0000;
+    margin: 0;
+}
+
+.car-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.car-images {
+    margin-bottom: 20px;
+}
+
+.main-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+.thumbnail:hover, .thumbnail.active {
+    border-color: #FF0000;
+}
+
+.car-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.car-specs, .car-description {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.car-specs h2, .car-description h2 {
+    color: #FF0000;
+    margin-top: 0;
+}
+
+.specs-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.specs-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.spec-label {
+    font-weight: bold;
+}
+
+.contact-seller {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.contact-button {
+    background-color: #FF0000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #CC0000;
+}
+
+@media (max-width: 768px) {
+    .car-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .car-price {
+        margin-top: 10px;
+    }
+
+    .car-info {
+        grid-template-columns: 1fr;
+    }
+}

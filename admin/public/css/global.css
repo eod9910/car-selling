@@ -1,0 +1,114 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: black; /* This sets the default text color for the entire body */
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes at least the full viewport height */
+  }
+  
+  header {
+      background-color: #ff0000;
+      padding: 20px 0; /* Increased padding */
+      height: 80px; /* Set a specific height */
+  }
+  
+  .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 100%; /* Change this to 100% to allow full width */
+      margin: 0;
+      padding: 0 20px;
+      position: relative;
+      height: 100%; /* Make it full height of the header */
+  }
+  
+  .logo-container {
+      flex: 0 0 auto;
+      max-width: 120px; /* Adjust based on your logo size */
+      position: absolute;
+      left: 20px; /* Align to the left border with some padding */
+      top: 50%; /* Center vertically */
+      transform: translateY(-50%); /* Adjust for perfect centering */
+  }
+  
+  .logo {
+      max-width: 100%;
+      height: auto;
+  }
+  
+  .title-container {
+      position: absolute;
+      left: 50%;
+      top: 50%; /* Center vertically */
+      transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+      text-align: center;
+  }
+  
+  body > header > .header-container > .title-container > .admin-title {
+      color: white !important;
+      font-size: 24px;
+      margin: 0;
+      white-space: nowrap;
+  }
+  
+  .nav-container {
+      flex: 0 0 auto;
+      display: flex;
+      justify-content: flex-end;
+      position: absolute; /* Position the nav absolutely within the header */
+      right: 20px; /* Push it 20px from the right edge */
+      top: 50%; /* Center vertically */
+      transform: translateY(-50%); /* Adjust for perfect vertical centering */
+  }
+  
+  nav {
+      width: auto; /* Change from 100% to auto */
+  }
+  
+  nav ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+  }
+  
+  nav ul li {
+      margin-left: 20px; /* Space between nav items */
+  }
+  
+  nav ul li:first-child {
+      margin-left: 0; /* Remove left margin from the first item */
+  }
+  
+  nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      text-transform: uppercase;
+  }
+  
+  main {
+      flex: 1;
+      padding: 20px;
+  }
+  
+  footer {
+      background-color: #000000;
+      color: white;
+      text-align: center;
+      padding: 0; /* Remove padding */
+      height: 40px; /* Set a specific height */
+      line-height: 20px; /* Center the text vertically */
+  }
+  
+  .content-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+  }
+  

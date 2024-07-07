@@ -1,0 +1,120 @@
+[33mcommit cdacc74e2bc5a4398eb16ceaff6b2fb345d09191[m[33m ([m[1;36mHEAD -> [m[1;32mmain_V2[m[33m, [m[1;31morigin/main_V2[m[33m)[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Wed Jul 3 20:35:29 2024 -0700
+
+    Fix CMS button to prevent navigation and only show dropdown on all pages
+
+[33mcommit 9ba5683725014b1508ae4e2757f13ef650f27531[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Wed Jul 3 20:31:23 2024 -0700
+
+    Fix CMS button to prevent navigation and only show dropdown on all pages
+
+[33mcommit c096dcb91f05e4fe09d097c6cccc564083a658f0[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Wed Jul 3 12:29:54 2024 -0700
+
+    Add User Management page and link it in the CMS
+
+[33mcommit a3f99b25fb356633064501e435d180c57bbd795f[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Wed Jul 3 11:52:41 2024 -0700
+
+    Fix upload middleware in PUT route to use .fields()
+
+[33mcommit dd24e07997f8049d503ec80746d1425d38f28d5f[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Wed Jul 3 01:47:19 2024 -0700
+
+    main_V2: Login and UI improvements
+    
+    This version includes:
+    - Implemented user authentication system
+    - Added login/logout functionality
+    - Improved dropdown menu in navigation
+    - Fixed image display issues
+    - Resolved car details fetching problem
+
+[33mcommit 3889bea6bbd2a23978a2411e4afece1427028651[m[33m ([m[1;31morigin/version2[m[33m, [m[1;32mversion2[m[33m)[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Tue Jul 2 20:37:01 2024 -0700
+
+    Version 2: Initial commit with all current files
+
+[33mcommit 5ab9bc83664e03134cf2116b030354428a2a7680[m[33m ([m[1;31morigin/main[m[33m, [m[1;31mheroku/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 21:39:01 2024 -0700
+
+    Prepare for Heroku deployment
+
+[33mcommit 568082ae13e666e9c0948408257ea97872e977d1[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 11:50:31 2024 -0700
+
+    Added comprehensive MongoDB connection logging
+
+[33mcommit a16e439bc51a7e0c853bc01633eac7e2ac4d4c02[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 11:06:48 2024 -0700
+
+    Updated MongoDB connection options to resolve SSL issues
+
+[33mcommit 64955f07f1e5431518afa984d3649d50293fd7e5[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 11:00:39 2024 -0700
+
+    Increased MongoDB connection timeout and added detailed error logging
+
+[33mcommit 53ba640e310be030eb3e308f53245ebb39f70824[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 10:54:15 2024 -0700
+
+    Updated MongoDB connection with detailed logging
+
+[33mcommit 818fa5cd9cdbfabdf20dd0fd34e53818c071a227[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 09:52:06 2024 -0700
+
+    Updated server.js with increased MongoDB connection timeout
+
+[33mcommit b3c2eeba541005c9549c5dc6b7f5c3a259085035[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 09:39:33 2024 -0700
+
+    Updated handleCMSFormSubmit function with improved error handling
+
+[33mcommit ec375166b048686dd7ff3ae2292812e1944a32db[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 09:29:52 2024 -0700
+
+    Fixed image handling in CMS form submission
+
+[33mcommit 31b09785702f057a30cee2bdf99ecef25e48c58f[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 07:36:30 2024 -0700
+
+    Add multer dependency
+
+[33mcommit 6465d422f61feab05333521b55e7548e2b6b0b7c[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 07:31:41 2024 -0700
+
+    Add Procfile for Heroku deployment
+
+[33mcommit 945b287bb1cd142497c7300d594ab08260230362[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Mon Jul 1 05:21:07 2024 -0700
+
+    Initial commit
+
+[33mcommit 9c830a02fb887b5ebb6e53b19626235934ed7519[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Sun Jun 30 03:49:59 2024 -0700
+
+    Initial commit of car selling website
+
+[33mcommit 5e07bb9a11b77c09780ffb9864b587120e1d5985[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: eod9910 <eod9910@gmail.com>
+Date:   Fri Jun 28 07:35:10 2024 -0700
+
+    Initial commit

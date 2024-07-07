@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - L&T Towing</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/global.css">
+    <link rel="stylesheet" href="/css/user-management.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="/assets/towing_logo.png" alt="L&T Towing Logo" class="logo">
+            </div>
+            <div class="title-container">
+                <h1 class="admin-title">USER MANAGEMENT</h1>
+            </div>
+            <nav class="nav-container">
+                <ul>
+                    <li><a href="/admin-dashboard">HOME</a></li>
+                    <li><a href="/car-management">CARS</a></li>
+                    <li><a href="/car-listings">LISTINGS</a></li>
+                    <li><a href="/user-management">USERS</a></li>
+                    <li><a href="#" id="logout-link">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="page-wrapper">
+        <div class="user-management-layout">
+            <section id="user-form-section" class="cms-section">
+                <h2>Add/Edit User</h2>
+                <form id="user-form" class="modern-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name:</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role:</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select a Role</option>
+                            <option value="admin">Admin</option>
+                            <option value="manager">Manager</option>
+                            <option value="user">User</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Add User</button>
+                        <button type="button" id="cancelEdit" class="btn btn-secondary" style="display: none;">Cancel Edit</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="user-listings-section" class="cms-section">
+                <h2>Current Users</h2>
+                <div id="user-listings">
+                    <!-- User listings will be dynamically inserted here -->
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 L&T Towing Admin Dashboard. All rights reserved.</p>
+    </footer>
+    <script src="/js/pages/user-management.js"></script>
+    <script src="/js/pages/admin-global.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+/* Index Page Styles */
+.hero-section {
+    background-color: #fff;
+    padding: 40px 0;
+    text-align: center;
+  }
+  
+  .hero-section h1 {
+    color: #FF0000;
+  }
+  
+  .featured-cars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+  }
+  
+  .car-card {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .car-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .car-info {
+    padding: 15px;
+  }
+  
+  .car-info h3 {
+    margin-top: 0;
+    color: #FF0000;
+  }

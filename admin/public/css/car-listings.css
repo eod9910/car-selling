@@ -1,0 +1,136 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 80px auto 20px;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+#add-new-car {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#add-new-car:hover {
+    background-color: #218838;
+}
+
+.car-list {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.car-item {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.car-item:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.car-item > div {
+    padding: 8px;
+    flex: 1;
+}
+
+.car-item .vehicle {
+    flex: 2;
+    font-weight: bold;
+    color: #0066cc;
+}
+
+.car-item .status {
+    font-style: italic;
+}
+
+.car-item .tow-source,
+.car-item .destination {
+    flex: 2;
+}
+
+.car-item .reason,
+.car-item .driver,
+.car-item .account {
+    flex: 1;
+}
+
+.car-item .truck,
+.car-item .balance {
+    flex: 1;
+    text-align: right;
+}
+
+.car-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.btn-edit, .btn-delete {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #0056b3;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
