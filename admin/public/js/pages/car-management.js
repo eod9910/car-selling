@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const submitButton = document.getElementById('submitButton');
     const addCarButton = document.getElementById('addCarButton');
     const cancelButton = document.getElementById('cancelButton');
-    const lookupVinButton = document.getElementById('lookupVinButton');
+    const lookupVinButton = document.getElementById('lookup-vin');
     let existingImages = [];
 
     console.log('Car ID:', carId);
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
             vinInput.style.background = '';
             const text = e.dataTransfer.getData('text');
             vinInput.value = text;
-            document.getElementById('lookupVinButton').click();
+            document.getElementById('lookup-vin').click();
         });
     }
 
@@ -229,6 +229,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Required elements for drag and drop not found');
             return;
         }
+
+        let isFileInputClicked = false;
 
         dropZone.addEventListener('dragover', (e) => {
             e.preventDefault();
@@ -254,11 +256,23 @@ document.addEventListener('DOMContentLoaded', function() {
         fileInput.addEventListener('change', (e) => {
             const files = e.target.files;
             handleFiles(files);
+            isFileInputClicked = false; // Reset the flag
         });
 
-        // Add click event to the drop zone to trigger file input
-        dropZone.addEventListener('click', () => {
-            fileInput.click();
+        dropZone.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (!isFileInputClicked) {
+                isFileInputClicked = true;
+                fileInput.click();
+            }
+        });
+
+        fileInput.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (isFileInputClicked) {
+                e.preventDefault(); // Prevent the second click
+            }
         });
     }
 
@@ -336,5 +350,37 @@ document.addEventListener('DOMContentLoaded', function() {
         displayExistingImages();
     }
 
-    // ... (any other functions you need)
+    async function getCarDetailsByVIN(vin) {
+        // In a real implementation, you would call a VIN decoding API here.
+        // For this example, we'll use the NHTSA API which is free but provides limited information.
+        const response = await fetch(`https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${vin}?format=json`);
+        const data = await response.json();
+        
+        // Extract relevant information from the API response
+        const results = data.Results;
+        const getValueByVariable = (variable) => {
+            const item = results.find(item => item.Variable === variable);
+            return item ? item.Value : '';
+        };
+
+        return {
+            make: getValueByVariable('Make'),
+            model: getValueByVariable('Model'),
+            year: getValueByVariable('Model Year'),
+            engine: getValueByVariable('Engine Model'),
+            transmission: getValueByVariable('Transmission Style'),
+            fuelType: getValueByVariable('Fuel Type - Primary'),
+            // Add more fields as needed
+        };
+    }
+
+    function populateFormWithCarDetails(carDetails) {
+        const fields = ['make', 'model', 'year', 'engine', 'transmission', 'fuelType'];
+        fields.forEach(field => {
+            const input = document.getElementById(field);
+            if (input && carDetails[field]) {
+                input.value = carDetails[field];
+            }
+        });
+    }
 });
