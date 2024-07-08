@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const path = require('path');
+const multer = require('multer');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // MongoDB connection
 mongoose.connect(process.env.MONGODB_URI, {
@@ -24,6 +26,20 @@ console.log('Current directory:', __dirname);
 
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, 'public')));
+
+// Set up multer for handling file uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        console.log('Multer destination:', 'public/uploads/');
+        cb(null, 'public/uploads/')
+    },
+    filename: function (req, file, cb) {
+        const filename = Date.now() + path.extname(file.originalname);
+        console.log('Multer filename:', filename);
+        cb(null, filename)
+    }
+});
+const upload = multer({ storage: storage });
 
 // Routes for HTML pages
 const htmlPath = path.join(__dirname, 'public', 'html');
@@ -58,14 +74,29 @@ const Car = require('./models/Car');
 
 // CRUD Operations
 // Create a new car
-app.post('/api/cars', async (req, res) => {
-  try {
-    const car = new Car(req.body);
-    await car.save();
-    res.status(201).json(car);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
+app.post('/api/cars', upload.array('carImages', 5), async (req, res) => {
+    console.log('Received files:', req.files);
+    console.log('Received body:', req.body);
+
+    try {
+        const carData = req.body;
+        
+        // Handle uploaded files
+        if (req.files && req.files.length > 0) {
+            carData.images = req.files.map(file => `/uploads/${file.filename}`);
+            console.log('Processed image paths:', carData.images);
+        } else {
+            console.log('No files received');
+        }
+
+        const newCar = new Car(carData);
+        const savedCar = await newCar.save();
+        console.log('Saved car:', savedCar);
+        res.status(201).json(savedCar);
+    } catch (error) {
+        console.error('Error saving car:', error);
+        res.status(400).json({ message: error.message });
+    }
 });
 
 // Read all cars

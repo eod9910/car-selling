@@ -1,7 +1,12 @@
 const mongoose = require('mongoose');
 
+const imageSchema = new mongoose.Schema({
+  data: Buffer,
+  contentType: String
+});
+
 const carSchema = new mongoose.Schema({
-  vin: { type: String, required: true, unique: true },
+  vin: { type: String, required: true },
   make: { type: String, required: true },
   model: { type: String, required: true },
   year: { type: Number, required: true },
@@ -24,9 +29,7 @@ const carSchema = new mongoose.Schema({
   history: String,
   dmvBackFees: Number,
   lot: String,
-  images: [String] // Array of image paths
+  images: [imageSchema] // Array of image objects
 });
-
-carSchema.index({ vin: 1 }, { unique: true });
 
 module.exports = mongoose.model('Car', carSchema);
