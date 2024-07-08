@@ -1,9 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const carId = urlParams.get('id');
-    const formTitle = document.getElementById('form-title');
-    const carForm = document.getElementById('carForm');
-    const submitButton = document.getElementById('submitButton');
+    const formTitle = document.querySelector('#car-form-section h2');
+    const carForm = document.getElementById('car-form');
     const addCarButton = document.getElementById('addCarButton');
     const cancelButton = document.getElementById('cancelButton');
     const lookupVinButton = document.getElementById('lookup-vin');
@@ -58,30 +57,48 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Populate form fields
-            const fields = ['vin', 'make', 'model', 'year', 'price', 'mileage', 'lot', 'engine', 'transmission', 'fuelType'];
+            const fields = [
+                'vin', 'make', 'model', 'year', 'price', 'mileage', 'lot', 
+                'engine', 'transmission', 'fuelType', 'exteriorColor', 
+                'features', 'history', 'dmvBackFees'
+            ];
+            
             fields.forEach(field => {
                 const input = document.getElementById(field);
                 if (input) {
-                    input.value = car[field] || '';
+                    if (field === 'features' || field === 'history') {
+                        input.value = car[field] || '';
+                    } else if (field === 'price' || field === 'dmvBackFees') {
+                        input.value = car[field] ? parseFloat(car[field]).toFixed(2) : '';
+                    } else {
+                        input.value = car[field] || '';
+                    }
                     console.log(`Set ${field} to:`, input.value);
                 } else {
                     console.warn(`Field ${field} not found in the form`);
                 }
             });
 
-            // Handle existing images
-            existingImages = car.images || [];
-            displayExistingImages();
-            
-            if (submitButton) {
-                submitButton.textContent = 'Update Car';
-                console.log('Changed submit button text to "Update Car"');
+            // Handle images
+            if (car.images && car.images.length > 0) {
+                existingImages = car.images;
+                displayExistingImages();
             }
+
+            // Update form state
+            const addCarButton = document.getElementById('addCarButton');
+            const formTitle = document.querySelector('#car-form-section h2');
+
+            if (addCarButton) addCarButton.textContent = 'Update Car';
+            else console.warn('addCarButton not found');
+
+            if (formTitle) formTitle.textContent = 'Edit Car';
+            else console.warn('form title element not found');
 
             console.log('Car details loaded successfully');
         } catch (error) {
             console.error('Error loading car details:', error);
-            alert('Failed to load car details. Please try again. Error: ' + error.message);
+            alert('Failed to load car details. Please try again.');
         }
     }
 
@@ -89,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event) event.preventDefault();
         
         console.log('Submitting car form...');
-        const carForm = document.getElementById('carForm');
+        const carForm = document.getElementById('car-form');
         console.log('Car form element:', carForm);
         
         if (!carForm) {
@@ -344,7 +361,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function resetForm() {
-        const carForm = document.getElementById('carForm');
+        const carForm = document.getElementById('car-form');
         if (carForm) carForm.reset();
         existingImages = [];
         displayExistingImages();
